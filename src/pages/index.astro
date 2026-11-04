@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site.config';
+---
+<Base>
+  <section class="hero">
+    <div class="container">
+      <h1>{site.name}</h1>
+      <p class="tagline">{site.tagline}</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <p class="placeholder">
+      Placeholder: the homepage content from the current site goes here.
+    </p>
+  </section>
+</Base>
+
+<style>
+  .hero { padding: 5rem 0 3rem; }
+  h1 { font-size: clamp(2.5rem, 9vw, 6rem); text-transform: uppercase; margin: 0 0 1rem; }
+  .tagline { color: var(--muted); font-size: 1.125rem; margin: 0; }
+  section + section { padding-bottom: 4rem; }
+</style>
