@@ -13,21 +13,22 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="img/icon-512.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Space+Mono:wght@400;700&display=swap">
 <style>
 /* Layout: a street zine. Full-bleed black-and-white splash, poster headline with the three definitions
    in green, black and red, then a tight black-and-white contact sheet with stamped frame numbers. */
 :root{
   --paper:#ffffff; --ink:#0a0a0a; --muted:#5a5a5a; --rule:#0a0a0a;
   --green:#1e7a35; --red:#c1121f; --scrim:rgba(0,0,0,.97);
-  --display:'Anton','Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
-  --body:'Oswald','Arial Narrow','Helvetica Neue',Arial,sans-serif;
+  --display:'Amatic SC','Arial Narrow','Helvetica Neue',Arial,sans-serif;
+  --body:'Amatic SC','Arial Narrow','Helvetica Neue',Arial,sans-serif;
   --mono:'Space Mono',ui-monospace,Menlo,Consolas,monospace;
   color-scheme:light;
 }
@@ -45,13 +46,13 @@ a{color:inherit}
 .splash img{width:100%;height:100%;object-fit:cover;object-position:56% 35%}
 .splash::after{content:"";position:absolute;inset:auto 0 0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.35));pointer-events:none}
 .intro{text-align:center;padding-block:clamp(28px,6vw,64px) clamp(24px,5vw,48px);border-bottom:6px solid var(--ink)}
-.intro h1{margin:0;font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(28px,11vw,150px);line-height:.9;letter-spacing:.005em;white-space:nowrap}
+.intro h1{margin:0;font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(36px,14vw,190px);line-height:.9;letter-spacing:.01em;white-space:nowrap}
 .intro h1 b{font-weight:400;color:var(--red)}
-.defs{list-style:none;margin:clamp(22px,4vw,40px) auto 0;padding:0;display:flex;flex-direction:column;gap:6px;font-family:var(--body);font-weight:300;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(17px,2.2vw,24px);max-width:44ch}
-.defs strong{font-weight:500}
+.defs{list-style:none;margin:clamp(22px,4vw,40px) auto 0;padding:0;display:flex;flex-direction:column;gap:6px;font-family:var(--body);font-weight:400;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(24px,3vw,34px);line-height:1.25;max-width:none}
+.defs strong{font-weight:700}
 .defs .g{color:var(--green)} .defs .k{color:var(--ink)} .defs .r{color:var(--red)}
 .defs span{color:var(--muted)}
-.go{display:inline-block;margin-top:clamp(24px,4vw,36px);font:700 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#fff;background:var(--ink);padding:12px 20px;border:0;cursor:pointer}
+.go{display:inline-block;margin-top:clamp(24px,4vw,36px);font:700 28px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:#fff;background:var(--ink);padding:10px 22px 12px;border:0;cursor:pointer}
 .go:hover{background:var(--red)}
 
 /* contact sheet */
