@@ -20,13 +20,13 @@
 <meta name="theme-color" content="#0a0a0a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Space+Mono:wght@700&display=swap">
 <style>
 /* Layout: a street zine. Full-bleed black-and-white splash, poster headline with the three definitions
    in green, black and red, then a contact print of black film strips with edge-printed frame numbers. */
 :root{
   --paper:#ffffff; --ink:#0a0a0a; --muted:#5a5a5a; --rule:#0a0a0a;
-  --green:#1e7a35; --red:#c1121f; --film:#0e0e0e; --edge:#8d8a85; --scrim:rgba(0,0,0,.97);
+  --green:#1e7a35; --red:#c1121f; --film:#0e0e0e; --chip:#ececec; --edge:#8d8a85; --scrim:rgba(0,0,0,.97);
   --display:'Amatic SC','Arial Narrow','Helvetica Neue',Arial,sans-serif;
   --body:'Amatic SC','Arial Narrow','Helvetica Neue',Arial,sans-serif;
   --mono:'Space Mono',ui-monospace,Menlo,Consolas,monospace;
@@ -56,7 +56,7 @@ a{color:inherit}
 .go:hover{background:var(--red)}
 
 /* contact sheet */
-.sheet-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding-block:26px 14px;font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.sheet-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding-block:26px 14px;font:700 clamp(24px,2.4vw,30px)/1 var(--display);letter-spacing:.04em;text-transform:uppercase}
 .sheet-head span:last-child{color:var(--muted);font-weight:400}
 /* contact print: black film strips on white paper, sprocket holes in the rebate,
    every frame the same 3:2 cell, frame numbers printed in the film edge */
@@ -71,17 +71,18 @@ a{color:inherit}
 .frame:hover img{filter:brightness(1.12)}
 .frame .no{position:absolute;left:0;right:0;top:calc(100% + 4px);display:flex;justify-content:space-between;color:var(--edge);font:700 9px/1 var(--mono);letter-spacing:.12em;pointer-events:none;white-space:nowrap}
 
-footer{border-top:6px solid var(--ink);padding-block:20px 32px;display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;font:400 12px var(--mono);letter-spacing:.04em}
-footer a{text-decoration:none;border-bottom:2px solid var(--red)}
-footer a:hover{color:var(--red)}
+footer{border-top:6px solid var(--ink);padding-block:32px 44px;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;font:400 24px/1.2 var(--display);letter-spacing:.04em;text-transform:uppercase}
+.social{display:flex;justify-content:center;gap:14px}
+.social a{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--chip);color:var(--ink);text-decoration:none;transition:background .2s,color .2s}
+.social a:hover{background:var(--ink);color:var(--paper)}
 
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:50;background:var(--scrim);display:grid;grid-template-rows:auto minmax(0,1fr) auto;
-  padding:max(12px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(12px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));color:#eee;font:400 12px var(--mono);letter-spacing:.06em}
+  padding:max(12px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(12px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));color:#eee;font:400 24px/1 var(--display);letter-spacing:.05em;text-transform:uppercase}
 .lb-top,.lb-bot{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .lb-stage{display:flex;align-items:center;justify-content:center;min-height:0;padding-block:10px}
 .lb-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
-.lb button{font:inherit;color:#fff;background:none;border:1px solid #555;padding:7px 12px;cursor:pointer;text-transform:uppercase;letter-spacing:.08em}
+.lb button{font:700 22px/1 var(--display);color:#fff;background:none;border:1px solid #555;padding:6px 14px 8px;cursor:pointer;text-transform:uppercase;letter-spacing:.06em}
 .lb button:hover{border-color:var(--red)}
 .ctrls{display:flex;gap:8px;align-items:center}
 #lb-count{min-width:76px;text-align:center}
@@ -108,8 +109,11 @@ footer a:hover{color:var(--red)}
   </main>
 
   <footer>
-    <span>© André O. Graves · DIRTY | BLACK | BLOOD</span>
-    <span><a href="https://www.instagram.com/dirty.black.blood/" target="_blank" rel="noopener">Instagram @dirty.black.blood</a> &nbsp; <a href="mailto:andre@thecityofangles.com">andre@thecityofangles.com</a></span>
+    <nav class="social" aria-label="Social">
+      <a href="https://www.instagram.com/dirty.black.blood/" target="_blank" rel="noopener" aria-label="Instagram @dirty.black.blood" title="Instagram @dirty.black.blood"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="mailto:andre@thecityofangles.com" aria-label="Email andre@thecityofangles.com" title="andre@thecityofangles.com"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></a>
+    </nav>
+    <span>© André O. Graves · Dirty | Black | Blood</span>
   </footer>
 </div>
 
