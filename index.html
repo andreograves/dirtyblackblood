@@ -41,21 +41,31 @@ a{color:inherit}
 [hidden]{display:none!important}
 .wrap{max-width:1400px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 
-/* splash */
-.splash{position:relative;height:min(72svh,760px);min-height:380px;overflow:hidden;background:#111}
-.splash img{width:100%;height:100%;object-fit:cover;object-position:56% 35%}
-.splash::after{content:"";position:absolute;inset:auto 0 0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.35));pointer-events:none}
-.intro{text-align:center;padding-block:clamp(28px,6vw,64px) clamp(24px,5vw,48px);border-bottom:6px solid var(--ink)}
-.intro h1{margin:0;font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(36px,14vw,190px);line-height:.9;letter-spacing:.01em;white-space:nowrap}
+/* splash page: text on the left, photo filling the right half; photo on top on phones */
+.splash{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:100svh}
+.sp-photo{position:relative;overflow:hidden;background:#111}
+.sp-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:56% 35%}
+.intro{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(28px,6vh,64px);text-align:center;min-width:0;padding-block:48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:16px}
+.intro h1{margin:0;font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(36px,6.4vw,112px);line-height:.9;letter-spacing:.01em;white-space:nowrap}
 .intro h1 b{font-weight:400;color:var(--red)}
-.defs{list-style:none;margin:clamp(22px,4vw,40px) auto 0;padding:0;display:flex;flex-direction:column;gap:6px;font-family:var(--body);font-weight:400;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(24px,3vw,34px);line-height:1.25;max-width:none}
+@media (max-width:800px){
+  .splash{grid-template-columns:minmax(0,1fr);grid-template-rows:52svh auto}
+  .sp-photo{order:-1}
+  .intro{gap:24px;padding-block:28px 36px;padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .intro h1{font-size:clamp(36px,14vw,110px)}
+}
+.defs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-family:var(--body);font-weight:400;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(22px,2.2vw,32px);line-height:1.25;max-width:none}
 .defs strong{font-weight:700;-webkit-text-stroke:.025em currentColor}
 .defs .g{color:var(--green)} .defs .k{color:var(--ink)} .defs .r{color:var(--red)}
 .defs span{color:var(--muted)}
-.go{display:inline-block;margin-top:clamp(24px,4vw,36px);font:700 28px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:#fff;background:var(--ink);padding:10px 22px 12px;border:0;cursor:pointer}
+.go{display:inline-block;font:700 28px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:#fff;background:var(--ink);padding:10px 22px 12px;border:0;cursor:pointer}
 .go:hover{background:var(--red)}
 
 /* contact sheet */
+.topbar{padding-block:20px 0;border-bottom:6px solid var(--ink)}
+.topbar a{display:inline-block;padding-bottom:14px;font:700 clamp(30px,3vw,40px)/1 var(--display);letter-spacing:.02em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+.topbar a b{font-weight:400;color:var(--red)}
+.topbar a:hover{color:var(--red)}
 .sheet-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding-block:26px 14px;font:700 clamp(24px,2.4vw,30px)/1 var(--display);letter-spacing:.04em;text-transform:uppercase}
 .sheet-head span:last-child{color:var(--muted);font-weight:400}
 /* contact print: black film strips on white paper, sprocket holes in the rebate,
@@ -90,9 +100,7 @@ footer{border-top:6px solid var(--ink);padding-block:32px 44px;display:flex;flex
 </style>
 </head>
 <body>
-<header class="splash"><img src="img/dbb-35.jpg" width="1600" height="1067" alt="A child in a cap and white T-shirt crouching to dance in a crowd, in black and white" fetchpriority="high"></header>
-
-<div class="wrap">
+<div class="splash" id="splash">
   <section class="intro">
     <h1>Dirty <b>|</b> Black <b>|</b> Blood</h1>
     <ul class="defs">
@@ -100,9 +108,17 @@ footer{border-top:6px solid var(--ink);padding-block:32px 44px;display:flex;flex
       <li><strong class="k">Black:</strong> <span>stark, grave, &amp; truthful. of the people.</span></li>
       <li><strong class="r">Blood:</strong> <span>community, life, &amp; soul. of the culture.</span></li>
     </ul>
-    <button type="button" class="go" id="go">&gt; yes.</button>
+    <a class="go" href="#contact-sheet">&gt; yes.</a>
+    <nav class="social" aria-label="Social">
+      <a href="https://www.instagram.com/dirty.black.blood/" target="_blank" rel="noopener" aria-label="Instagram @dirty.black.blood" title="Instagram @dirty.black.blood"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="mailto:andre@thecityofangles.com" aria-label="Email andre@thecityofangles.com" title="andre@thecityofangles.com"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></a>
+    </nav>
   </section>
+  <div class="sp-photo"><img src="img/dbb-35.jpg" width="1600" height="1067" alt="A child in a cap and white T-shirt crouching to dance in a crowd, in black and white" fetchpriority="high"></div>
+</div>
 
+<div class="wrap" id="sheet-view" hidden>
+  <header class="topbar"><a href="#" aria-label="Back to the splash page">Dirty <b>|</b> Black <b>|</b> Blood</a></header>
   <main id="sheet-wrap">
     <div class="sheet-head"><span>Contact sheet</span><span id="count"></span></div>
     <section class="sheet" id="sheet" aria-label="Photographs"></section>
@@ -135,7 +151,9 @@ function render(){const n=per(), strips=[];
   sheet.dataset.n=n;}
 render(); addEventListener('resize',()=>{if(+sheet.dataset.n!==per())render();});
 document.getElementById('count').textContent=`${PHOTOS.length} frames`;
-document.getElementById('go').onclick=()=>document.getElementById('sheet-wrap').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+const splash=document.getElementById('splash'), view=document.getElementById('sheet-view');
+function route(){const onSheet=location.hash==='#contact-sheet'; splash.hidden=onSheet; view.hidden=!onSheet; scrollTo(0,0);}
+route(); addEventListener('hashchange',route);
 
 const lb=document.getElementById('lb'), img=document.getElementById('lb-img'); let idx=0, last=null;
 function show(){const p=PHOTOS[idx]; img.src=p.src; img.alt=`Street photograph, frame ${idx+1}`; document.getElementById('lb-count').textContent=`FR ${pad(idx+1)}/${pad(PHOTOS.length)}`; new Image().src=PHOTOS[(idx+1)%PHOTOS.length].src;}
