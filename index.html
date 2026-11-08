@@ -214,6 +214,46 @@ body:has(.cover-page:not([hidden])){background:#ededeb}
 @media(max-width:700px){.sheet-social{gap:12px}.sheet-social a{width:60px;height:60px}.sheet-social svg{width:38.4px;height:38.4px}.sheet-social .social-slash{font-size:60px}}
 
 #sheet-view .topbar{text-align:center}
+
+/* Phone and tablet sizing: maintain hierarchy without fixed desktop dimensions. */
+@media(max-width:900px){
+ .immersive-header{padding:20px clamp(16px,4vw,32px);gap:12px;flex-wrap:wrap}
+ .immersive-header h1{font-size:clamp(30px,5.7vw,48px);min-width:0}
+ .immersive-header nav{gap:6px;flex-wrap:nowrap}
+ .immersive-header nav a,.sheet-social a{width:44px;height:44px}
+ .immersive-header nav svg,.sheet-social svg{width:clamp(28px,4.5vw,38px);height:clamp(28px,4.5vw,38px)}
+ .immersive-header .social-slash,.sheet-social .social-slash{font-size:42px}
+ .immersive-copy{width:min(52%,470px);margin:clamp(80px,18svh,170px) 0 0 4vw;padding-bottom:32px}
+ .immersive-copy p{font-size:clamp(22px,3vw,28px);max-width:none;margin-bottom:22px}
+ .immersive-enter{font-size:clamp(32px,4vw,40px)}
+}
+@media(max-width:540px){
+ .immersive{min-height:100svh;display:flex;flex-direction:column}
+ .immersive-header{padding-top:max(16px,env(safe-area-inset-top));padding-inline:18px;flex-direction:column;align-items:flex-start;gap:8px}
+ .immersive-header h1{font-size:clamp(30px,8.5vw,44px);letter-spacing:.025em;max-width:100%}
+ .immersive-header nav{align-self:flex-end;margin-top:-2px}
+ .immersive-photo{object-position:57% center}
+ .immersive::before{background:linear-gradient(0deg,rgba(0,0,0,.87),rgba(0,0,0,.32) 58%,rgba(0,0,0,.35)),linear-gradient(90deg,rgba(0,0,0,.3),transparent)}
+ .immersive-copy{width:auto;max-width:none;margin:auto 20px 0;padding-top:clamp(100px,21svh,220px);padding-bottom:max(24px,env(safe-area-inset-bottom))}
+ .immersive-copy p{font-size:clamp(22px,5.7vw,29px);max-width:100%;margin-bottom:18px;line-height:1.25}
+ .immersive-enter{font-size:36px;margin-top:0}
+ #sheet-view .topbar a{font-size:clamp(28px,8vw,40px);white-space:normal}
+ .sheet-head{font-size:24px}
+ .lb{font-size:19px;padding-inline:10px}
+ .lb-top{gap:10px}
+ .lb-top>span{font-size:clamp(17px,4.7vw,24px)}
+ .lb button{font-size:20px;padding:8px 12px}
+ .lb-bot>span:empty{display:none}
+ .lb-bot{justify-content:center}
+ footer{font-size:21px}
+}
+@media(max-height:500px) and (orientation:landscape){
+ .immersive-header{padding-block:12px;flex-direction:row}
+ .immersive-header h1{font-size:34px}
+ .immersive-copy{width:52%;margin:16px 0 0 4vw;padding-top:0;padding-bottom:20px}
+ .immersive-copy p{font-size:22px;margin-bottom:12px}
+ .immersive-enter{font-size:30px}
+}
 </style>
 </head>
 <body>
