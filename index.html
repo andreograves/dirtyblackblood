@@ -146,19 +146,47 @@ body:has(.cover-page:not([hidden])){background:#ededeb}
 .cover-definition h2{font-weight:700;letter-spacing:.01em}
 .cover-definition p{font-weight:400;letter-spacing:.03em}
 .cover-enter{font-weight:700;letter-spacing:.06em}
+
+/* Full-screen photographic entry, with quiet Amatic lettering. */
+.immersive{display:block;position:relative;isolation:isolate;min-height:100svh;width:100%;overflow:hidden;background:#111;color:#fff;font-family:'Amatic SC','Arial Narrow',sans-serif}
+.immersive-photo{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:55% 50%}
+.immersive::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,0,0,.58),rgba(0,0,0,.16) 43%,transparent 65%),linear-gradient(180deg,rgba(0,0,0,.35),transparent 25%)}
+.immersive-header{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:30px 3.5vw}
+.immersive-header h1{margin:0;font-size:clamp(26px,2.8vw,44px);font-weight:700;line-height:1.1;letter-spacing:.04em;white-space:nowrap}
+.immersive-header h1 span{padding:0 .1em;font-weight:400}
+.immersive-header em{font-style:normal;color:#c1121f}
+.immersive-header nav{display:flex;gap:18px;font-size:clamp(20px,1.8vw,28px);align-items:center}
+.immersive a{text-decoration:none}
+.immersive a:hover{color:#e34b55}
+.immersive-copy{width:min(45%,660px);padding:0 0 70px;margin:clamp(100px,24vh,280px) 0 0 4vw}
+.immersive-copy p{margin:0 0 30px;font-size:clamp(22px,2.1vw,34px);font-weight:400;line-height:1.35;letter-spacing:.025em}
+.immersive-copy strong{font-weight:700}
+.immersive-enter{display:inline-block;margin-top:10px;font-size:clamp(36px,3.2vw,52px);font-weight:700;line-height:1.2;padding:6px 0}
+@media(max-width:700px){
+ .immersive-header{padding:24px 20px;align-items:flex-start;gap:16px}
+ .immersive-header h1{font-size:28px}
+ .immersive-header nav{font-size:20px;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+ .immersive-photo{object-position:58% center}
+ .immersive::before{background:linear-gradient(90deg,rgba(0,0,0,.68),rgba(0,0,0,.2) 80%),linear-gradient(0deg,rgba(0,0,0,.4),transparent)}
+ .immersive-copy{width:calc(100% - 40px);max-width:410px;margin:clamp(150px,32vh,300px) 20px 0;padding-bottom:40px}
+ .immersive-copy p{font-size:25px;margin-bottom:24px;max-width:330px}
+ .immersive-enter{font-size:38px}
+}
+@media(prefers-reduced-motion:reduce){.immersive{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<main class="splash cover-page" id="splash">
-  <h1 class="cover-masthead" aria-label="Dirty Black Blood"><span>DIRTY</span><i aria-hidden="true">|</i><span>BLACK</span><i aria-hidden="true">|</i><span class="blood">BLOOD</span></h1>
-  <section class="cover-photo" aria-label="Dirty Black Blood">
-    <img class="cover-image" src="img/dbb-35.jpg" width="1600" height="1067" alt="A child in a cap and white T-shirt crouching to dance in a crowd, in black and white" fetchpriority="high">
-    <div class="cover-copy">
-      <div class="cover-definition"><h2>DIRTY:</h2><p>RAW, UNFILTERED, &amp; REAL.<br>OF THE STREET.</p></div>
-      <div class="cover-definition"><h2>BLACK:</h2><p>STARK, GRAVE, &amp; TRUTHFUL.<br>OF THE PEOPLE.</p></div>
-      <div class="cover-definition"><h2 class="blood">BLOOD:</h2><p>COMMUNITY, LIFE, &amp; SOUL.<br>OF THE CULTURE.</p></div>
-    </div>
-    <a class="cover-enter" href="#contact-sheet">&gt; YES.</a>
+<main class="splash immersive" id="splash">
+  <img class="immersive-photo" src="img/dbb-35.jpg" width="1600" height="1067" alt="A child in a cap and white T-shirt crouching to dance in a crowd, in black and white" fetchpriority="high">
+  <header class="immersive-header">
+    <h1>DIRTY <span aria-hidden="true">|</span> BLACK <span aria-hidden="true">|</span> <em>BLOOD</em></h1>
+    <nav aria-label="Social"><a href="https://www.instagram.com/dirty.black.blood/" target="_blank" rel="noopener">INSTAGRAM</a><span aria-hidden="true">/</span><a href="mailto:andre@thecityofangles.com">EMAIL</a></nav>
+  </header>
+  <section class="immersive-copy" aria-label="The meaning of Dirty Black Blood">
+    <p><strong>DIRTY:</strong> RAW, UNFILTERED, &amp; REAL. OF THE STREET.</p>
+    <p><strong>BLACK:</strong> STARK, GRAVE, &amp; TRUTHFUL. OF THE PEOPLE.</p>
+    <p><strong>BLOOD:</strong> COMMUNITY, LIFE, &amp; SOUL. OF THE CULTURE.</p>
+    <a class="immersive-enter" href="#contact-sheet">&gt; YES.</a>
   </section>
 </main>
 
