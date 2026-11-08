@@ -20,7 +20,7 @@
 <meta name="theme-color" content="#0a0a0a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Space+Mono:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Amatic+SC:wght@400;700&family=Space+Mono:wght@700&display=swap">
 <style>
 /* Layout: a street zine. Full-bleed black-and-white splash, poster headline with the three definitions
    in green, black and red, then a contact print of black film strips with edge-printed frame numbers. */
@@ -97,25 +97,40 @@ footer{border-top:6px solid var(--ink);padding-block:32px 44px;display:flex;flex
 .ctrls{display:flex;gap:8px;align-items:center}
 #lb-count{min-width:76px;text-align:center}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* Portrait magazine cover, built with live type and the original photograph. */
+.cover-page{--cover-font:'Barlow Condensed','Arial Narrow',Impact,sans-serif;display:block;width:min(100%,960px);margin:0 auto;min-height:0;background:#fff;font-family:var(--cover-font)}
+body:has(.cover-page:not([hidden])){background:#ededeb}
+.cover-masthead{margin:0;display:flex;align-items:center;justify-content:space-between;gap:.025em;padding:.06em .13em .1em;font:900 clamp(40px,11.2vw,108px)/1 var(--cover-font);letter-spacing:-.055em;white-space:nowrap;color:#080808}
+.cover-masthead i{font-style:normal;font-weight:600;font-size:.83em;letter-spacing:-.08em}
+.blood{color:#c1121f}
+.cover-photo{position:relative;aspect-ratio:960/1220;isolation:isolate;overflow:hidden;background:#111;color:#fff}
+.cover-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% center;z-index:-2}
+.cover-photo::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,0,0,.42),transparent 55%),linear-gradient(0deg,rgba(0,0,0,.25),transparent 25%)}
+.cover-copy{position:absolute;left:5.5%;top:17%;width:42%;display:flex;flex-direction:column;gap:clamp(24px,4vw,40px)}
+.cover-definition h2{margin:0 0 .04em;font:900 clamp(34px,7.7vw,74px)/.95 var(--cover-font);letter-spacing:-.035em}
+.cover-definition p{margin:0;font:700 clamp(15px,3.1vw,30px)/1.13 var(--cover-font);letter-spacing:-.025em}
+.cover-definition:not(:last-child)::after{content:"";display:block;width:16%;height:3px;margin-top:clamp(18px,3.2vw,32px);background:#fff}
+.cover-enter{position:absolute;left:5.5%;bottom:4%;font:800 clamp(28px,5.5vw,52px)/1 var(--cover-font);letter-spacing:-.03em;text-decoration:none}
+.cover-enter:hover{color:#c1121f}
+.cover-enter:focus-visible{outline-color:#fff}
+@media(min-width:1100px){.cover-page{width:min(760px,100%)}.cover-masthead{font-size:85px}.cover-definition h2{font-size:60px}.cover-definition p{font-size:24px}.cover-copy{gap:28px}.cover-definition:not(:last-child)::after{margin-top:24px}.cover-enter{font-size:42px}}
+@media(max-width:420px){.cover-copy{width:46%;top:16%;gap:18px}.cover-definition h2{font-size:34px}.cover-definition p{font-size:15px}.cover-definition:not(:last-child)::after{margin-top:16px}}
 </style>
 </head>
 <body>
-<div class="splash" id="splash">
-  <section class="intro">
-    <h1>Dirty <b>|</b> Black <b>|</b> Blood</h1>
-    <ul class="defs">
-      <li><strong class="g">Dirty:</strong> <span>raw, unfiltered, &amp; real. of the street.</span></li>
-      <li><strong class="k">Black:</strong> <span>stark, grave, &amp; truthful. of the people.</span></li>
-      <li><strong class="r">Blood:</strong> <span>community, life, &amp; soul. of the culture.</span></li>
-    </ul>
-    <a class="go" href="#contact-sheet">&gt; yes.</a>
-    <nav class="social" aria-label="Social">
-      <a href="https://www.instagram.com/dirty.black.blood/" target="_blank" rel="noopener" aria-label="Instagram @dirty.black.blood" title="Instagram @dirty.black.blood"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-      <a href="mailto:andre@thecityofangles.com" aria-label="Email andre@thecityofangles.com" title="andre@thecityofangles.com"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></a>
-    </nav>
+<main class="splash cover-page" id="splash">
+  <h1 class="cover-masthead" aria-label="Dirty Black Blood"><span>DIRTY</span><i aria-hidden="true">|</i><span>BLACK</span><i aria-hidden="true">|</i><span class="blood">BLOOD</span></h1>
+  <section class="cover-photo" aria-label="Dirty Black Blood">
+    <img class="cover-image" src="img/dbb-35.jpg" width="1600" height="1067" alt="A child in a cap and white T-shirt crouching to dance in a crowd, in black and white" fetchpriority="high">
+    <div class="cover-copy">
+      <div class="cover-definition"><h2>DIRTY:</h2><p>RAW, UNFILTERED, &amp; REAL.<br>OF THE STREET.</p></div>
+      <div class="cover-definition"><h2>BLACK:</h2><p>STARK, GRAVE, &amp; TRUTHFUL.<br>OF THE PEOPLE.</p></div>
+      <div class="cover-definition"><h2 class="blood">BLOOD:</h2><p>COMMUNITY, LIFE, &amp; SOUL.<br>OF THE CULTURE.</p></div>
+    </div>
+    <a class="cover-enter" href="#contact-sheet">&gt; YES.</a>
   </section>
-  <div class="sp-photo"><img src="img/dbb-35.jpg" width="1600" height="1067" alt="A child in a cap and white T-shirt crouching to dance in a crowd, in black and white" fetchpriority="high"></div>
-</div>
+</main>
 
 <div class="wrap" id="sheet-view" hidden>
   <header class="topbar"><a href="#" aria-label="Back to the splash page">Dirty <b>|</b> Black <b>|</b> Blood</a></header>
