@@ -116,6 +116,29 @@ body:has(.cover-page:not([hidden])){background:#ededeb}
 .cover-enter:focus-visible{outline-color:#fff}
 @media(min-width:1100px){.cover-page{width:min(760px,100%)}.cover-masthead{font-size:85px}.cover-definition h2{font-size:60px}.cover-definition p{font-size:24px}.cover-copy{gap:28px}.cover-definition:not(:last-child)::after{margin-top:24px}.cover-enter{font-size:42px}}
 @media(max-width:420px){.cover-copy{width:46%;top:16%;gap:18px}.cover-definition h2{font-size:34px}.cover-definition p{font-size:15px}.cover-definition:not(:last-child)::after{margin-top:16px}}
+
+/* Landscape splash: full-width masthead, copy beside the original photo. */
+.cover-page{width:100%;max-width:none;min-height:100svh;display:flex;flex-direction:column}
+.cover-masthead{justify-content:center;gap:.13em;padding:.12em .2em;font-size:clamp(40px,8.2vw,140px);letter-spacing:-.04em}
+.cover-photo{aspect-ratio:auto;flex:1;min-height:650px;background:#0a0a0a;overflow:hidden}
+.cover-image{left:38%;width:62%;object-position:center;object-fit:cover}
+.cover-photo::after{background:linear-gradient(90deg,#0a0a0a 0%,#0a0a0a 34%,rgba(10,10,10,.65) 40%,transparent 52%)}
+.cover-copy{position:relative;left:auto;top:auto;width:38%;padding:48px 4vw 110px;gap:28px}
+.cover-definition h2{font-size:clamp(40px,4vw,64px)}
+.cover-definition p{font-size:clamp(19px,1.8vw,28px);letter-spacing:0}
+.cover-definition:not(:last-child)::after{margin-top:24px}
+.cover-enter{left:4vw;bottom:30px;font-size:40px}
+@media(max-width:700px){
+ .cover-masthead{font-size:clamp(35px,8vw,58px);gap:.08em}
+ .cover-photo{min-height:0;display:flex;flex-direction:column}
+ .cover-image{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;order:0}
+ .cover-photo::after{display:none}
+ .cover-copy{order:1;width:100%;padding:28px 24px;gap:24px}
+ .cover-definition h2{font-size:38px}
+ .cover-definition p{font-size:22px}
+ .cover-definition:not(:last-child)::after{margin-top:20px}
+ .cover-enter{position:relative;left:auto;bottom:auto;order:2;margin:0 24px 32px;font-size:34px}
+}
 </style>
 </head>
 <body>
