@@ -202,6 +202,16 @@ body:has(.cover-page:not([hidden])){background:#ededeb}
 /* Smaller sketch-style social marks; retain generous click targets. */
 .immersive-header nav svg{width:41.6px;height:41.6px;stroke-width:1.05}
 @media(max-width:700px){.immersive-header nav svg{width:38.4px;height:38.4px}}
+
+/* Share the splash's sketch icons and slash with the contact sheet. */
+.sheet-social{display:flex;align-items:center;justify-content:center;gap:16px}
+.sheet-social a{display:grid;place-items:center;width:64px;height:64px;background:none;border-radius:0;color:#fff;transition:color .2s}
+.sheet-social a:hover,.sheet-social a:focus-visible{color:#c1121f;background:none}
+.sheet-social svg{display:block;width:41.6px;height:41.6px;stroke-width:1.05}
+.sheet-social .social-slash{font:400 64px/1 'Amatic SC','Arial Narrow',sans-serif;color:#fff}
+#sheet-view footer{background:#0a0a0a;color:#fff}
+#sheet-view .blood{color:#c1121f}
+@media(max-width:700px){.sheet-social{gap:12px}.sheet-social a{width:60px;height:60px}.sheet-social svg{width:38.4px;height:38.4px}.sheet-social .social-slash{font-size:60px}}
 </style>
 </head>
 <body>
@@ -232,18 +242,27 @@ body:has(.cover-page:not([hidden])){background:#ededeb}
 </main>
 
 <div class="wrap" id="sheet-view" hidden>
-  <header class="topbar"><a href="#" aria-label="Back to the splash page">Dirty <b>|</b> Black <b>|</b> Blood</a></header>
+  <header class="topbar"><a href="#" aria-label="Back to the splash page">Dirty <b>|</b> Black <b>|</b> <span class="blood">Blood</span></a></header>
   <main id="sheet-wrap">
     <div class="sheet-head"><span>Contact sheet</span><span id="count"></span></div>
     <section class="sheet" id="sheet" aria-label="Photographs"></section>
   </main>
 
   <footer>
-    <nav class="social" aria-label="Social">
-      <a href="https://www.instagram.com/dirty.black.blood/" target="_blank" rel="noopener" aria-label="Instagram @dirty.black.blood" title="Instagram @dirty.black.blood"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-      <a href="mailto:andre@thecityofangles.com" aria-label="Email andre@thecityofangles.com" title="andre@thecityofangles.com"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></a>
-    </nav>
-    <span>© André O. Graves · Dirty | Black | Blood</span>
+    <nav class="sheet-social" aria-label="Social">
+<a href="https://www.instagram.com/dirty.black.blood/" target="_blank" rel="noopener" aria-label="Instagram @dirty.black.blood" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+<path d="M7.6 3.5C10 3.1 14.8 3.7 17 3.2c2.7-.1 3.9 1.6 3.7 4.5l.4 8.8c.1 3.1-1.8 4.5-4.4 4.2-2.7.4-6.7-.2-9.2.2-2.8.1-4.5-1.4-4.2-4.4-.4-2.6.1-6.5-.2-8.8-.1-2.6 1.4-4.4 4.5-4.2Z"/>
+<path d="M15.9 11.7c.4 2.5-1.4 4.6-3.8 4.4-2.6.2-4.4-1.7-4.1-4.1-.2-2.4 1.8-4.2 4-3.9 2.1-.2 3.9 1.3 3.9 3.6Z"/>
+<path d="m17.3 6.6.3.2M4.4 7.3c-.3 3 .2 6.2-.1 8.7" opacity=".45"/>
+</svg></a>
+<span class="social-slash" aria-hidden="true">/</span>
+<a href="mailto:andre@thecityofangles.com" aria-label="Email andre@thecityofangles.com" title="Email"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+<path d="M4.7 5.7c3.7-.4 9.9.1 14.4-.3 1.6-.1 2.1.8 1.9 2.1l.3 9.3c.1 1.7-.8 2.2-2.4 2-4.1.4-9.7-.3-14.1.2-1.5 0-2.1-.9-1.9-2.4L3.2 8c-.2-1.5.2-2.3 1.5-2.3Z"/>
+<path d="m3.9 6.8 4.2 3.5 3.8 3.1c2.9-2.3 5.8-4.3 8.1-6.7M3.9 17.8l4.9-4.4M20.2 17.7l-4.7-4.2"/>
+<path d="m5.6 6.5 6.2 5.6 6.6-5.3" opacity=".35"/>
+</svg></a>
+</nav>
+    <span>© André O. Graves · Dirty | Black | <span class="blood">Blood</span></span>
   </footer>
 </div>
 
