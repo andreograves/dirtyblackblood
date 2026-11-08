@@ -139,6 +139,13 @@ body:has(.cover-page:not([hidden])){background:#ededeb}
  .cover-definition:not(:last-child)::after{margin-top:20px}
  .cover-enter{position:relative;left:auto;bottom:auto;order:2;margin:0 24px 32px;font-size:34px}
 }
+
+/* Restore the original Amatic SC lettering throughout the splash. */
+.cover-page{--cover-font:'Amatic SC','Arial Narrow','Helvetica Neue',Arial,sans-serif}
+.cover-masthead{font-weight:700;letter-spacing:.01em}
+.cover-definition h2{font-weight:700;letter-spacing:.01em}
+.cover-definition p{font-weight:400;letter-spacing:.03em}
+.cover-enter{font-weight:700;letter-spacing:.06em}
 </style>
 </head>
 <body>
