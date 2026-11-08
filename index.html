@@ -287,7 +287,19 @@ function render(){const n=per(), strips=[];
 render(); addEventListener('resize',()=>{if(+sheet.dataset.n!==per())render();});
 document.getElementById('count').textContent=`${PHOTOS.length} frames`;
 const splash=document.getElementById('splash'), view=document.getElementById('sheet-view');
-function route(){const onSheet=location.hash==='#contact-sheet'; splash.hidden=onSheet; view.hidden=!onSheet; scrollTo(0,0);}
+let sheetOpen=false;
+function shufflePhotos(){
+  for(let i=PHOTOS.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [PHOTOS[i],PHOTOS[j]]=[PHOTOS[j],PHOTOS[i]];
+  }
+}
+function route(){
+  const onSheet=location.hash==='#contact-sheet';
+  if(onSheet&&!sheetOpen){shufflePhotos();render();}
+  sheetOpen=onSheet;
+  splash.hidden=onSheet; view.hidden=!onSheet; scrollTo(0,0);
+}
 route(); addEventListener('hashchange',route);
 
 const lb=document.getElementById('lb'), img=document.getElementById('lb-img'); let idx=0, last=null;
