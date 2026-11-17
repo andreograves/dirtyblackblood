@@ -256,6 +256,33 @@ body:has(.cover-page:not([hidden])){background:#ededeb}
  .immersive-enter{font-size:30px}
 }
 </style>
+<!-- Visitor stats (GoatCounter, dirtyblackblood). Counts only on the live domain, and counts each view change as its own page. -->
+<script>
+(function () {
+  if (!/(^|\.)(dirtyblackblood\.com)$/.test(location.hostname)) return;
+  var queue = [], last = null;
+  function path() {
+    var h = location.hash.replace(/^#\/?/, '');
+    return location.pathname + (h ? (/\/$/.test(location.pathname) ? '' : '/') + h : '');
+  }
+  function hit() {
+    var p = path(); if (p === last) return; last = p;
+    var send = function () { window.goatcounter.count({ path: p, title: document.title }); };
+    if (window.goatcounter && window.goatcounter.count) send(); else queue.push(send);
+  }
+  var s = document.createElement('script');
+  s.async = true; s.src = 'https://gc.zgo.at/count.js';
+  s.setAttribute('data-goatcounter', 'https://dirtyblackblood.goatcounter.com/count');
+  s.setAttribute('data-goatcounter-settings', '{"no_onload": true}');
+  s.onload = function () { queue.splice(0).forEach(function (fn) { fn(); }); };
+  document.head.appendChild(s);
+  var later = function () { setTimeout(hit, 0); }; // after the site has drawn the new view and set its title
+  addEventListener('hashchange', later); addEventListener('popstate', later);
+  var push = history.pushState;
+  history.pushState = function () { var r = push.apply(this, arguments); setTimeout(hit, 0); return r; };
+  if (document.readyState === 'loading') addEventListener('DOMContentLoaded', function () { setTimeout(hit, 0); }); else hit();
+})();
+</script>
 </head>
 <body>
 <main class="splash immersive" id="splash">
